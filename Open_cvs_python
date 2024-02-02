@@ -1,0 +1,19 @@
+def open_csv(filename, d=','):
+    # define an empty list to store data
+    data = []
+    
+    # use the 'with' keyword to load from csv and store into data
+    with open(filename, encoding='utf-8') as mData:
+        # use reader method in csv package to create python list
+        info = csv.reader(mData, delimiter = d)
+        print(info)
+        
+        # loop over info and append to data
+        for row in info:
+            data.append(row)
+        
+    # no need to close file, using with statement closes automatically
+    return data
+
+csv_data = open_csv('files/boston_marathon2017_edited.csv')
+print(csv_data[1:5])
